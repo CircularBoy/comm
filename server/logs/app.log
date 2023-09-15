@@ -1,0 +1,38 @@
+[2023-08-30T13:42:52.865] [INFO] default - {
+  controller: {
+    createHouse: [Function: createHouse],
+    getHouses: [Function: getHouses]
+  },
+  service: {
+    createHouse: [Function: createHouse],
+    getHouses: [Function: getHouses]
+  },
+  model: Model { houses },
+  routes: [
+    {
+      method: 'post',
+      path: '/houses/create',
+      func: [Function: createHouse]
+    },
+    { method: 'get', path: '/houses', func: [Function: getHouses] }
+  ]
+}
+[2023-08-30T13:43:21.598] [INFO] default - {
+  controller: {
+    createHouse: [Function: createHouse],
+    getHouses: [Function: getHouses]
+  },
+  service: {
+    createHouse: [Function: createHouse],
+    getHouses: [Function: getHouses]
+  },
+  model: Model { houses },
+  routes: [
+    {
+      method: 'post',
+      path: '/houses/create',
+      func: [Function: createHouse]
+    },
+    { method: 'get', path: '/houses', func: [Function: getHouses] }
+  ]
+}
