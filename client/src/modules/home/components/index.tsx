@@ -14,7 +14,7 @@ const RootModule = (): JSX.Element => {
   return (
     <>
       <Box display="grid" gridGap={2} gridAutoFlow="row dense">
-        <Container></Container>
+        <Container>Hey</Container>
       </Box>
     </>
   );

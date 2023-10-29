@@ -1,5 +1,5 @@
+import { composeWithDevTools } from '@redux-devtools/extension';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 
 import api from '../api';
