@@ -10,7 +10,9 @@ import { IModule } from '../types';
 //     readingsPoint: [number, number];
 //   }>;
 // }
-export interface IUtilType extends Document {
+export interface IUtilTypeModel extends IUtilType, Document {}
+
+export interface IUtilType {
   name: string;
   plans: [
     {
@@ -19,27 +21,12 @@ export interface IUtilType extends Document {
       priceRange: [
         {
           price: number;
-          readingsPoint: [number, number] | [];
+          readingsPoint: [number, number] | []; // in some services like electric we need range
         }
       ];
     }
   ];
 }
-
-// export interface IUtilType extends Document {
-//   name: string;
-//   plans: [
-//     {
-//       dateStart: string;
-//       planValue: [
-//         {
-//           value: string;
-//           stateRangeStart: number; // in some services like electric we need range
-//         }
-//       ];
-//     }
-//   ];
-// }
 
 export interface IUtilModuleType extends IModule {
   controller: UtilControllerType;

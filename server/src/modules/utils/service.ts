@@ -1,22 +1,36 @@
 import Util from './model';
-import { IUtilType } from './types';
+import { IUtilType, IUtilTypeModel } from './types';
 
 export type UtilServiceType = typeof UtilService;
 
 const UtilService = {
-  async createUtils(data: IUtilType): Promise<IUtilType | null> {
+  // async createUtils(data: IUtilType): Promise<IUtilTypeModel | null> {
+  //   try {
+  //     console.log(data);
+  //     const createdService: IUtilTypeModel = await Util.create(data);
+  //     return createdService;
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // },
+
+  async createUtils(data: IUtilType[]): Promise<IUtilType[] | null> {
     try {
-      console.log(data);
-      const createdService: IUtilType = await Util.create(data);
-      return createdService;
+      console.log({ data });
+      const createdUtils: IUtilType[] = await Util.insertMany(data);
+      return createdUtils;
     } catch (e) {
       console.log(e);
     }
   },
 
-  async getUtils() {
+  async getUtils(): Promise<IUtilType[] | null> {
     try {
       const utils = await Util.find();
+      console.log(utils instanceof Util);
+      utils.map((item) => {
+        console.log(item._id);
+      });
       return utils;
     } catch (e) {
       console.log(e);

@@ -1,6 +1,6 @@
 import service from './service';
 import { HouseType } from './types';
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 
 export type HouseControllerType = typeof HouseController;
 // class HouseController {
@@ -33,7 +33,11 @@ export type HouseControllerType = typeof HouseController;
 //   }
 // }
 const HouseController = {
-  createHouse: async (req: Request, res: Response): Promise<void> => {
+  createHouse: async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
     try {
       const createdHouse: HouseType | null = await service.createHouse(
         req.body
@@ -41,12 +45,17 @@ const HouseController = {
       res.status(200).json(createdHouse);
       // res.status(200).json('create');
     } catch (e) {
-      console.log(e);
-      res.status(400).json('house create error: ' + e);
+      next(e);
+      // console.log(e);
+      // res.status(400).json('house create error: ' + e);
     }
   },
 
-  getHouses: async (req: Request, res: Response): Promise<void> => {
+  getHouses: async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
     try {
       const houses = await service.getHouses();
       // const houses = [
@@ -55,8 +64,9 @@ const HouseController = {
       // ];
       res.status(200).json(houses);
     } catch (e) {
-      console.log(e);
-      res.status(400).json('house get all error: ' + e);
+      next(e);
+      // console.log(e);
+      // res.status(400).json('house get all error: ' + e);
     }
   }
 };

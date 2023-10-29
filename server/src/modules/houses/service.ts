@@ -1,6 +1,7 @@
 import House from './model';
 import { HouseType } from './types';
 import { utilsList } from '../../helpers/constantsData/utils';
+import ApiError from '../../helpers/exceptions/api-errors';
 
 export type HouseServiceType = typeof HouseService;
 // class HouseService {
@@ -44,6 +45,7 @@ const HouseService = {
   },
 
   getHouses: async () => {
+    // throw ApiError.BadRequest('Hey hye hye');
     try {
       const houses: HouseType[] = await House.find();
       console.log('get _blank from db', houses);

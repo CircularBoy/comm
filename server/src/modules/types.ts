@@ -1,10 +1,10 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { Model, Document } from 'mongoose';
 
 export type Route = {
   method: string;
   path: string;
-  func: (req: Request, res: Response) => Promise<void>;
+  func: (req: Request, res: Response, next: NextFunction) => Promise<void>;
 };
 
 export interface IModule {

@@ -1,5 +1,5 @@
 import { model, Schema } from 'mongoose';
-import { IUtilType } from './types';
+import { IUtilType, IUtilTypeModel } from './types';
 
 export const UtilSchema = new Schema<IUtilType>({
   name: { type: String, required: true },
@@ -32,4 +32,4 @@ export const UtilSchema = new Schema<IUtilType>({
 
 */
 
-export default model<IUtilType>('UtilModel', UtilSchema);
+export default model<IUtilTypeModel>('UtilModel', UtilSchema);

@@ -3,20 +3,16 @@ import mongoose from 'mongoose';
 import router from './config/router';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import errorMiddleware from './helpers/middleware/error-middleware';
 
 const app = express();
-app.use(cors());
 dotenv.config();
 
+app.use(cors());
 app.use(express.json());
-
-// console.log({ router });
 app.use('/api', router);
-// console.log(router);
+app.use(errorMiddleware);
 
-// app.get('/api/houses', (req, res) => {
-//   res.status(200).json('hello world');
-// });
 async function startApp() {
   try {
     // mongoose.set('strictQuery', true);

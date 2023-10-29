@@ -2,13 +2,18 @@ import controller from './controller';
 
 const routes = [
   {
+    method: 'get',
+    path: '/utils/',
+    func: controller.getUtils
+  },
+  {
     method: 'post',
-    path: '/helper/create',
+    path: '/utils/create',
     func: controller.createUtils
   },
   {
     method: 'post',
-    path: '/helper/:id/addPlan',
+    path: '/utils/:id/addPlan',
     func: controller.addPlan
   }
   // {
