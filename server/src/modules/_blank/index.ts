@@ -5,8 +5,8 @@ import model from './model';
 import { IBlankModule } from './types';
 
 const _blankModule: IBlankModule = {
-  controller: controller,
-  service: service,
+  controller,
+  service,
   model,
   routes
 };
