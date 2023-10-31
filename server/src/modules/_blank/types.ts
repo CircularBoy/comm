@@ -4,7 +4,7 @@ import { BlankServiceType } from './service';
 import { IModule } from '../types';
 
 //type where we describe some entity and extends it by document from mongoose
-export interface IUtilTypeModel extends BlankType, Document {}
+export interface IBlankTypeModel extends BlankType, Document {}
 
 //type of some entity
 export interface BlankType {
