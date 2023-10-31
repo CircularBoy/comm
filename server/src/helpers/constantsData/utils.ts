@@ -1,5 +1,5 @@
 import { parsePrice } from '../utils';
-import { IUtilType } from '../../modules/utils/types';
+import { IUtilType } from '../../modules/util/types';
 
 // const UTILS = [
 //   {
