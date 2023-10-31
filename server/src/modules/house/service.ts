@@ -17,9 +17,9 @@ export type HouseServiceType = typeof HouseService;
 //
 //   async getHouses() {
 //     try {
-//       const houses: HouseType[] = await House.find();
-//       console.log('get _blank from db', houses);
-//       return houses;
+//       const house: HouseType[] = await House.find();
+//       console.log('get _blank from db', house);
+//       return house;
 //     } catch (e) {
 //       console.log(e);
 //     }

@@ -1,9 +1,9 @@
 import Pay from './model';
-import House from '../houses/model';
+import House from '../house/model';
 // import UtilsService from '../helper/services';
 import { IPaySchema, IPayType } from './types';
 
-// const {Pay, houses} = model
+// const {Pay, house} = model
 export type PayServiceType = typeof PayService;
 const PayService = {
   async createPay(payData: IPayType): Promise<IPayType | null> {

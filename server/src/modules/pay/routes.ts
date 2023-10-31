@@ -3,14 +3,13 @@ import controller from './controller';
 const routes = [
   {
     method: 'post',
-    path: '/houses/create',
-    func: controller.createHouse
+    path: '/pay/create',
+    func: controller.create
   },
   {
     method: 'get',
-    path: '/houses',
-    func: controller.getHouses
+    path: '/pay',
+    func: controller.getPays
   }
 ];
-
 export default routes;

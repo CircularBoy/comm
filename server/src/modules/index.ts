@@ -1,6 +1,6 @@
-import Houses from './houses/index';
-import Pays from './pays';
-import Utils from './utils';
+import Houses from './house/index';
+import Pays from './pay';
+import Utils from './util';
 
 const modules = {
   Houses,

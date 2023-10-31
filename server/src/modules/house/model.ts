@@ -1,6 +1,6 @@
 import { model, Schema } from 'mongoose';
 import { HouseType } from './types';
-import { UtilSchema } from '../utils/model';
+import { UtilSchema } from '../util/model';
 
 const House = new Schema({
   name: { type: String, required: true },
@@ -10,4 +10,4 @@ const House = new Schema({
   utils: [UtilSchema]
 });
 
-export default model<HouseType>('houses', House);
+export default model<HouseType>('house', House);

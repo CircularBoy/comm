@@ -2,7 +2,7 @@ import { Document } from 'mongoose';
 import { HouseControllerType } from './controller';
 import { HouseServiceType } from './service';
 import { IModule } from '../types';
-import { IUtilTypeModel } from '../utils/types';
+import { IUtilTypeModel } from '../util/types';
 
 export interface HouseType extends Document {
   name: string;
@@ -14,7 +14,7 @@ export interface HouseType extends Document {
 // export interface HouseType extends Document {
 //   name: string;
 //   address: string;
-//   pays?: number;
+//   pay?: number;
 // }
 
 export interface IHouseModuleType extends IModule {

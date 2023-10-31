@@ -21,11 +21,11 @@ export type HouseControllerType = typeof HouseController;
 //   async getHouses(req: Request, res: Response): Promise<void> {
 //     try {
 //       // const _blank = await service.getHouses(req.params)
-//       const houses = [
-//         { name: 'teatralna', pays: [2314324324, 324234234234] },
-//         { name: 'dedushka', pays: [2314324324, 324234234234] }
+//       const house = [
+//         { name: 'teatralna', pay: [2314324324, 324234234234] },
+//         { name: 'dedushka', pay: [2314324324, 324234234234] }
 //       ];
-//       res.status(200).json(houses);
+//       res.status(200).json(house);
 //     } catch (e) {
 //       console.log(e);
 //       res.status(400).json('house get all error: ' + e);
@@ -58,9 +58,9 @@ const HouseController = {
   ): Promise<void> => {
     try {
       const houses = await service.getHouses();
-      // const houses = [
-      //   { name: 'teatralna', pays: [2314324324, 324234234234] },
-      //   { name: 'dedushka', pays: [2314324324, 324234234234] }
+      // const house = [
+      //   { name: 'teatralna', pay: [2314324324, 324234234234] },
+      //   { name: 'dedushka', pay: [2314324324, 324234234234] }
       // ];
       res.status(200).json(houses);
     } catch (e) {
