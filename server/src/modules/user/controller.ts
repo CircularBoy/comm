@@ -11,7 +11,6 @@ const userController = {
     next: NextFunction
   ): Promise<void> {
     try {
-      console.log('body: ', req.body);
       const createdUser: IUser = await service.registration(req.body);
       console.log({ createdUser });
       res.status(200).json('some response');

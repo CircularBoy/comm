@@ -6,7 +6,7 @@ import { IModule } from '../types';
 //type where we describe some entity and extends it by document from mongoose
 export interface IUserModel extends IUser, Document {}
 
-//type of some entity
+//Main user interface
 export interface IUser {
   email: string;
   password: string;
