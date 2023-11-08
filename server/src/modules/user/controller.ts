@@ -1,4 +1,4 @@
-import service from './services/auth-token';
+import service from './services/auth';
 import { NextFunction, Request, Response } from 'express';
 import { IUser } from './types';
 

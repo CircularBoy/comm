@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 import { UserControllerType } from './controller';
-import { UserServiceType } from './services/auth-token';
+import { UserServiceType } from './services/auth';
 import { IModule } from '../types';
 
 //type where we describe some entity and extends it by document from mongoose

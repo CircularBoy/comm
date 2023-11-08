@@ -3,7 +3,7 @@ import { IToken, IUser, IUserModel } from '../types';
 import User from '../models/user';
 import bcrypt from 'bcrypt';
 import { uuid } from 'uuidv4';
-import UserDto from '../dtos/safeUser';
+import UserDto from '../dtos/safe-user';
 import tokenService from './token-service';
 import nodemailer from 'nodemailer';
 
@@ -29,7 +29,7 @@ const userService = {
       activationLink
     });
 
-    const userDto: UserDto = new UserDto(createdUser);
+    const userDto = new UserDto(createdUser);
     const tokens: IToken = tokenService.generateToken({ ...userDto });
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
 
@@ -43,8 +43,8 @@ const userService = {
       }
     });
     const test = mail.sendMail({
-      from: 'yuri.kruhovyi@gmail.com',
-      to: 'yurets097@gmail.com',
+      from: 'amazon123@gmail.com',
+      to: 'annadovgayaa@gmail.com',
       subject: 'kek',
       text: '',
       html: '' + '<div><h1>hi</h1></div>'
