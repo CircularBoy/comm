@@ -22,7 +22,7 @@ const userService = {
     };
   },
 
-  async saveToken(userId, refreshToken) {
+  async saveToken(userId: string, refreshToken: string) {
     const tokenData: ITokenModel = await TokenModel.findOne({ userId });
 
     if (tokenData) {

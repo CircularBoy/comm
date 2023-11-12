@@ -12,9 +12,9 @@ export default class UserDto {
     this.id = model._id;
     this.isActivate = model.isActivate;
   }
-  bb(model: IUserModel) {
-    this.email = model.email;
-    this.id = model._id;
-    this.isActivate = model.isActivate;
-  }
+  // bb(model: IUserModel) {
+  //   this.email = model.email;
+  //   this.id = model._id;
+  //   this.isActivate = model.isActivate;
+  // }
 }

@@ -10,6 +10,11 @@ const routes = [
     method: 'get',
     path: '/users',
     func: controller.getUsers
+  },
+  {
+    method: 'get',
+    path: `/activation-account/:activationLink`,
+    func: controller.activationAccount
   }
 ];
 

@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 import { uuid } from 'uuidv4';
 import UserDto from '../dtos/safe-user';
 import tokenService from './token-service';
-import nodemailer from 'nodemailer';
+import MailService from '../../../services/mail-service';
 
 export type UserServiceType = typeof userService;
 
@@ -23,39 +23,36 @@ const userService = {
     const hashPassword = await bcrypt.hash(password, 2);
     const activationLink = uuid();
 
+    try {
+      const mail = MailService.sendMail(email, activationLink);
+      console.log({ mail });
+    } catch (e) {
+      console.log({ e });
+      throw new Error(e);
+    }
+
     const createdUser: IUserModel = await User.create({
       email,
       password: hashPassword,
       activationLink
     });
 
-    const userDto = new UserDto(createdUser);
+    const userDto: UserDto = new UserDto(createdUser);
     const tokens: IToken = tokenService.generateToken({ ...userDto });
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
 
-    const mail = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 587,
-      secure: false,
-      auth: {
-        user: 'yuri.kruhovyi@gmail.com',
-        pass: 'eiim dsve anhx lqhl'
-      }
-    });
-    const test = mail.sendMail({
-      from: 'amazon123@gmail.com',
-      to: 'annadovgayaa@gmail.com',
-      subject: 'kek',
-      text: '',
-      html: '' + '<div><h1>hi</h1></div>'
-    });
-    console.log({ test });
     return {
       ...tokens,
       ...userDto
     };
+  },
+
+  async activationAccount(link: string) {
+    const user: IUserModel = await User.findOne({ activationLink: link });
+    user.isActivate = true;
+    await user.save();
+    return user;
   }
 };
 
-// export default new HouseService();
 export default userService;

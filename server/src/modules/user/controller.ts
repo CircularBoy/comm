@@ -11,8 +11,13 @@ const userController = {
     next: NextFunction
   ): Promise<void> {
     try {
-      const createdUser = await service.registration(req.body);
-      console.log({ createdUser });
+      const { refreshToken } = await service.registration(req.body);
+
+      //add domain on production
+      res.cookie('refreshToken', refreshToken, {
+        maxAge: 1000 * 60 * 30,
+        httpOnly: true
+      });
       res.status(200).json('some response');
     } catch (e) {
       next(e);
@@ -27,6 +32,17 @@ const userController = {
     try {
       // const user = await service.registration();
       // res.status(200).json('some response');
+    } catch (e) {
+      next(e);
+    }
+  },
+
+  async activationAccount(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { activationLink } = req.params;
+      const user = await service.activationAccount(activationLink);
+      console.log('controller', user);
+      res.json({ user });
     } catch (e) {
       next(e);
     }
