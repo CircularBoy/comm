@@ -1,6 +1,8 @@
 import service from './services/auth';
 import { NextFunction, Request, Response } from 'express';
 import { IUser } from './types';
+import { Result, ValidationError, validationResult } from 'express-validator';
+import ApiError from '../../helpers/exceptions/api-errors';
 
 export type UserControllerType = typeof userController;
 
@@ -11,6 +13,12 @@ const userController = {
     next: NextFunction
   ): Promise<void> {
     try {
+      // sample of validation
+      // const result: Result<ValidationError> = validationResult(req);
+      // if (!result.isEmpty()) {
+      // return next(ApiError.BadRequest('Registration error', result.array()));
+      // return null;
+      // }
       const { refreshToken } = await service.registration(req.body);
 
       //add domain on production

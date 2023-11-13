@@ -1,10 +1,12 @@
 import controller from './controller';
+import RegistrationValidator from './validators/registration';
 
 const routes = [
   {
     method: 'post',
     path: '/auth/registration',
-    func: controller.registration
+    func: controller.registration,
+    validator: RegistrationValidator
   },
   {
     method: 'get',
