@@ -1,8 +1,5 @@
-import service from './services/auth';
+import authService from './services/auth';
 import { NextFunction, Request, Response } from 'express';
-import { IUser } from './types';
-import { Result, ValidationError, validationResult } from 'express-validator';
-import ApiError from '../../helpers/exceptions/api-errors';
 
 export type UserControllerType = typeof userController;
 
@@ -19,14 +16,57 @@ const userController = {
       // return next(ApiError.BadRequest('Registration error', result.array()));
       // return null;
       // }
-      const { refreshToken } = await service.registration(req.body);
+      const { refreshToken, email } = await authService.registration(req.body);
 
       //add domain on production
       res.cookie('refreshToken', refreshToken, {
         maxAge: 1000 * 60 * 30,
         httpOnly: true
       });
-      res.status(200).json('some response');
+      res.status(200).json('email ' + email + ' registered');
+    } catch (e) {
+      next(e);
+    }
+  },
+
+  async login(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const userData = await authService.login(req.body);
+      //add domain on production
+      res.cookie('refreshToken', userData.refreshToken, {
+        maxAge: 1000 * 60 * 30,
+        httpOnly: true
+      });
+
+      res.status(200).json(userData);
+    } catch (e) {
+      next(e);
+    }
+  },
+
+  async logout(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { refreshToken } = req.cookies;
+
+      const user = await authService.logout(refreshToken);
+      //add domain on production
+      res.clearCookie('refreshToken');
+      res.status(200).json(user);
+    } catch (e) {
+      next(e);
+    }
+  },
+
+  async refresh(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const { refreshToken } = req.cookies;
+      const userData = await authService.refresh(refreshToken);
+      res.cookie('refreshToken', userData);
+      res.status(200).json({ userData });
     } catch (e) {
       next(e);
     }
@@ -48,7 +88,7 @@ const userController = {
   async activationAccount(req: Request, res: Response, next: NextFunction) {
     try {
       const { activationLink } = req.params;
-      const user = await service.activationAccount(activationLink);
+      const user = await authService.activationAccount(activationLink);
       console.log('controller', user);
       res.json({ user });
     } catch (e) {

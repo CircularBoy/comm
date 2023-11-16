@@ -1,10 +1,16 @@
-import { IToken, ITokenModel } from '../types';
+import { IToken, ITokenModel, IUser } from '../types';
 import * as jwt from 'jsonwebtoken';
 import TokenModel from '../models/token';
+import UserDto from '../dtos/safe-user';
 // import dotenv from 'dotenv';
 // dotenv.config();
 
 export type UserServiceType = typeof userService;
+// interface CustomJwtPayload extends jwt.JwtPayload {
+//   email: string;
+//   id: string;
+//   isActivate: boolean;
+// }
 
 const userService = {
   generateToken(payload: object): IToken | null {
@@ -32,6 +38,42 @@ const userService = {
 
     const token = await TokenModel.create({ userId, refreshToken });
     return token.save();
+  },
+
+  async validateAccessToken(token: string) {
+    try {
+      const userData = jwt.verify(token, process.env.JWT_REFRESH_SECRET);
+      return userData;
+    } catch (e) {
+      return null;
+    }
+  },
+
+  async validateRefreshToken(token: string) {
+    try {
+      const userData = jwt.verify(
+        token,
+        process.env.JWT_REFRESH_SECRET
+      ) as jwt.JwtPayload & UserDto;
+
+      return userData;
+    } catch (e) {
+      return null;
+    }
+  },
+
+  async findTokenInDb(refreshToken: string) {
+    try {
+      const token: ITokenModel = await TokenModel.findOne({ refreshToken });
+      return token;
+    } catch (e) {
+      return null;
+    }
+  },
+
+  async clearToken(refreshToken: string) {
+    const token = await TokenModel.deleteOne({ refreshToken });
+    return token;
   }
 };
 

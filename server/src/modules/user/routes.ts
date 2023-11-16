@@ -4,9 +4,19 @@ import RegistrationValidator from './validators/registration';
 const routes = [
   {
     method: 'post',
-    path: '/auth/registration',
+    path: '/registration',
     func: controller.registration,
     validator: RegistrationValidator
+  },
+  {
+    method: 'get',
+    path: `/activation-account/:activationLink`,
+    func: controller.activationAccount
+  },
+  {
+    method: 'post',
+    path: '/login',
+    func: controller.login
   },
   {
     method: 'get',
@@ -14,9 +24,14 @@ const routes = [
     func: controller.getUsers
   },
   {
+    method: 'post',
+    path: '/logout',
+    func: controller.logout
+  },
+  {
     method: 'get',
-    path: `/activation-account/:activationLink`,
-    func: controller.activationAccount
+    path: '/refresh',
+    func: controller.refresh
   }
 ];
 

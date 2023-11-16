@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import router from './config/router';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import errorMiddleware from './helpers/middleware/error-middleware';
 
@@ -10,6 +11,7 @@ dotenv.config();
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 app.use('/api', router);
 app.use(errorMiddleware);
 
