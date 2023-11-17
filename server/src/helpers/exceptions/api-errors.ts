@@ -10,7 +10,8 @@ export default class ApiError extends Error {
     this.errors = errors;
   }
 
-  static UnauthorizedError() {
+  static UnauthorizedError(e?: string) {
+    console.log('apierror handler', e);
     return new ApiError(401, 'User un authorized');
   }
 

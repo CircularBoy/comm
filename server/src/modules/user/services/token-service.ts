@@ -19,7 +19,7 @@ const userService = {
     });
 
     const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {
-      expiresIn: '30m'
+      expiresIn: '30d'
     });
 
     return {
@@ -42,9 +42,15 @@ const userService = {
 
   async validateAccessToken(token: string) {
     try {
-      const userData = jwt.verify(token, process.env.JWT_REFRESH_SECRET);
+      console.log('start validate');
+      const userData = jwt.verify(
+        token,
+        process.env.JWT_ACCESS_SECRET
+      ) as jwt.JwtPayload & UserDto;
+      console.log({ userData });
       return userData;
     } catch (e) {
+      console.log({ e });
       return null;
     }
   },

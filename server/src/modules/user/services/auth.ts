@@ -105,6 +105,11 @@ const userService = {
   async logout(refreshToken: string) {
     const userData = await tokenService.clearToken(refreshToken);
     return userData;
+  },
+
+  async getUsers() {
+    const users = await UserModel.find();
+    return users;
   }
 };
 

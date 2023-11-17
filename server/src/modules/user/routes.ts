@@ -21,7 +21,8 @@ const routes = [
   {
     method: 'get',
     path: '/users',
-    func: controller.getUsers
+    func: controller.getUsers,
+    role: 'user' as const
   },
   {
     method: 'post',

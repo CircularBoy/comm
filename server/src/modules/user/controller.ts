@@ -63,9 +63,14 @@ const userController = {
     next: NextFunction
   ): Promise<void> {
     try {
+      console.log(123);
       const { refreshToken } = req.cookies;
+      console.log({ refreshToken });
       const userData = await authService.refresh(refreshToken);
-      res.cookie('refreshToken', userData);
+      res.cookie('refreshToken', userData.refreshToken, {
+        maxAge: 1000 * 60 * 30,
+        httpOnly: true
+      });
       res.status(200).json({ userData });
     } catch (e) {
       next(e);
@@ -78,8 +83,8 @@ const userController = {
     next: NextFunction
   ): Promise<void> {
     try {
-      // const user = await service.registration();
-      // res.status(200).json('some response');
+      const users = await authService.getUsers();
+      res.status(200).json({ users });
     } catch (e) {
       next(e);
     }
