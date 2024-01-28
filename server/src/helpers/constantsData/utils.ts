@@ -50,13 +50,15 @@ import { IUtilType } from '../../modules/util/types';
 export const utilsList: IUtilType[] = [
   {
     name: 'Electricity',
+    tag: 'electricity',
+    default: true,
     plans: [
       {
-        dateStart: '20.12.2023',
+        dateStart: '20.06.2023',
         priceRange: [
           {
-            price: parsePrice(1.6),
-            readingsPoint: [0, 100]
+            price: parsePrice(2.6),
+            readingsPoint: []
           }
         ]
       }
@@ -64,9 +66,11 @@ export const utilsList: IUtilType[] = [
   },
   {
     name: 'Gas',
+    tag: 'gas',
+    default: true,
     plans: [
       {
-        dateStart: '20.12.2023',
+        dateStart: '20.06.2023',
         priceRange: [
           {
             price: parsePrice(7.96),
@@ -78,14 +82,16 @@ export const utilsList: IUtilType[] = [
   },
   {
     name: 'Delivery gas',
+    tag: 'transportGas',
+    default: true,
     plans: [
       {
-        dateStart: '20.12.2023',
+        dateStart: '20.06.2023',
         isStaticAmount: true,
         priceRange: [
           {
             price: parsePrice(123),
-            readingsPoint: [50, 150]
+            readingsPoint: []
           }
         ]
       }

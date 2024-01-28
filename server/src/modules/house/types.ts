@@ -1,14 +1,16 @@
 import { Document } from 'mongoose';
 import { HouseControllerType } from './controller';
-import { HouseServiceType } from './service';
 import { IModule } from '../types';
-import { IUtilTypeModel } from '../util/types';
+import { IUtilModel } from '../util/types';
+import { HouseServiceType } from './service';
 
-export interface HouseType extends Document {
+export interface IHouseModel extends IHouse, Document {}
+
+export interface IHouse {
   name: string;
   address: string;
   pays: number;
-  utils?: Array<IUtilTypeModel>;
+  utils?: Array<IUtilModel>;
 }
 
 // export interface HouseType extends Document {

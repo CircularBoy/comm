@@ -10,10 +10,12 @@ import { IModule } from '../types';
 //     readingsPoint: [number, number];
 //   }>;
 // }
-export interface IUtilTypeModel extends IUtilType, Document {}
+export interface IUtilModel extends IUtilType, Document {}
 
 export interface IUtilType {
   name: string;
+  tag: 'electricity' | 'gas' | 'transportGas';
+  default: boolean;
   plans: [
     {
       dateStart: string;

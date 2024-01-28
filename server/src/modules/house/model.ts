@@ -1,5 +1,5 @@
 import { model, Schema } from 'mongoose';
-import { HouseType } from './types';
+import { IHouseModel } from './types';
 import { UtilSchema } from '../util/model';
 
 const House = new Schema({
@@ -10,4 +10,4 @@ const House = new Schema({
   utils: [UtilSchema]
 });
 
-export default model<HouseType>('house', House);
+export default model<IHouseModel>('house', House);

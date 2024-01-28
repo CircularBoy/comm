@@ -1,36 +1,43 @@
 import Util from './model';
-import { IUtilType, IUtilTypeModel } from './types';
+import { IUtilType, IUtilModel } from './types';
 
 export type UtilServiceType = typeof UtilService;
 
 const UtilService = {
-  // async createUtils(data: IUtilType): Promise<IUtilTypeModel | null> {
-  //   try {
-  //     console.log(data);
-  //     const createdService: IUtilTypeModel = await Util.create(data);
-  //     return createdService;
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // },
-
-  async createUtils(data: IUtilType[]): Promise<IUtilType[] | null> {
+  async createDefaultUtils(
+    data: IUtilType | IUtilType[]
+  ): Promise<IUtilModel | null | IUtilModel[]> {
     try {
-      console.log({ data });
-      const createdUtils: IUtilType[] = await Util.insertMany(data);
-      return createdUtils;
+      const isManyUtils = Array.isArray(data);
+      let createdData: IUtilModel | IUtilModel[];
+      if (isManyUtils) {
+        createdData = await Util.create(data);
+      } else {
+        createdData = await Util.insertMany(data);
+      }
+      console.log(createdData);
+      return createdData;
     } catch (e) {
       console.log(e);
     }
   },
 
-  async getUtils(): Promise<IUtilType[] | null> {
+  async getUtils(): Promise<IUtilModel[] | null> {
     try {
       const utils = await Util.find();
       console.log(utils instanceof Util);
       utils.map((item) => {
         console.log(item._id);
       });
+      return utils;
+    } catch (e) {
+      console.log(e);
+    }
+  },
+
+  async deleteUtils() {
+    try {
+      const utils = await Util.deleteMany();
       return utils;
     } catch (e) {
       console.log(e);

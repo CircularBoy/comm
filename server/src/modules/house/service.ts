@@ -1,41 +1,12 @@
 import House from './model';
-import { HouseType } from './types';
+import { IHouse, IHouseModel } from './types';
 import { utilsList } from '../../helpers/constantsData/utils';
-import ApiError from '../../helpers/exceptions/api-errors';
 
 export type HouseServiceType = typeof HouseService;
-// class HouseService {
-//   async createHouse(house: HouseType): Promise<HouseType | null> {
-//     try {
-//       const createdHouse = await House.create(house);
-//       return createdHouse;
-//     } catch (e) {
-//       console.log(e);
-//       return null;
-//     }
-//   }
-//
-//   async getHouses() {
-//     try {
-//       const house: HouseType[] = await House.find();
-//       console.log('get _blank from db', house);
-//       return house;
-//     } catch (e) {
-//       console.log(e);
-//     }
-//   }
-//
-//   // async updateOne(id) {
-//   //   try {
-//   //   } catch (e) {}
-//   // }
-// }
 const HouseService = {
-  createHouse: async (house: HouseType): Promise<HouseType | null> => {
+  createHouse: async (house: IHouse): Promise<IHouseModel | null> => {
     try {
-      console.dir(utilsList[0].plans[0].priceRange);
       const houseData = { ...house, utils: utilsList };
-      console.log(houseData);
       const createdHouse = await House.create(houseData);
       return createdHouse;
     } catch (e) {
@@ -44,10 +15,9 @@ const HouseService = {
     }
   },
 
-  getHouses: async () => {
-    // throw ApiError.BadRequest('Hey hye hye');
+  getHouses: async (): Promise<IHouseModel[] | null> => {
     try {
-      const houses: HouseType[] = await House.find();
+      const houses: IHouseModel[] = await House.find();
       console.log('get _blank from db', houses);
       return houses;
     } catch (e) {
