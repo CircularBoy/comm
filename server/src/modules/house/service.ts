@@ -18,7 +18,6 @@ const HouseService = {
   getHouses: async (): Promise<IHouseModel[] | null> => {
     try {
       const houses: IHouseModel[] = await House.find();
-      console.log('get _blank from db', houses);
       return houses;
     } catch (e) {
       console.log(e);
