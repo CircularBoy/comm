@@ -16,14 +16,14 @@ const userController = {
       // return next(ApiError.BadRequest('Registration error', result.array()));
       // return null;
       // }
-      const { refreshToken, email } = await authService.registration(req.body);
+      const userData = await authService.registration(req.body);
 
       //add domain on production
-      res.cookie('refreshToken', refreshToken, {
+      res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 1000 * 60 * 30,
         httpOnly: true
       });
-      res.status(200).json('email ' + email + ' registered');
+      res.status(200).json('email ' + userData.email + ' registered');
     } catch (e) {
       next(e);
     }
@@ -63,9 +63,7 @@ const userController = {
     next: NextFunction
   ): Promise<void> {
     try {
-      console.log(123);
       const { refreshToken } = req.cookies;
-      console.log({ refreshToken });
       const userData = await authService.refresh(refreshToken);
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 1000 * 60 * 30,
