@@ -3,13 +3,13 @@ import controller from './controller';
 const routes = [
   {
     method: 'post',
-    path: '/house/create',
+    path: '/houses/create',
     func: controller.createHouse,
     role: 'user' as const
   },
   {
     method: 'get',
-    path: '/house',
+    path: '/houses',
     func: controller.getHouses,
     role: 'user' as const
   }
