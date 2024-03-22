@@ -42,7 +42,6 @@ const userService = {
 
   async validateAccessToken(token: string) {
     try {
-      console.log('start validate');
       const userData = jwt.verify(
         token,
         process.env.JWT_ACCESS_SECRET
