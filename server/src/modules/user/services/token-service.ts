@@ -46,7 +46,6 @@ const userService = {
         token,
         process.env.JWT_ACCESS_SECRET
       ) as jwt.JwtPayload & UserDto;
-      console.log({ userData });
       return userData;
     } catch (e) {
       console.log({ e });
