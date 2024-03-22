@@ -4,7 +4,7 @@ const routes = [
   {
     method: 'post',
     path: '/pay/create',
-    func: controller.create
+    func: controller.createPay
   },
   {
     method: 'get',
