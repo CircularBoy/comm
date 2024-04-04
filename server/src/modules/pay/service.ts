@@ -1,17 +1,17 @@
 import Pay from './model';
 import House from '../house/model';
 // import UtilsService from '../helper/services';
-import { IPaySchema, IPayType } from './types';
+import { IPayModel, IPay } from './types';
 
 // const {Pay, house} = model
 export type PayServiceType = typeof PayService;
 const PayService = {
-  async createPay(payData: IPayType): Promise<IPayType | null> {
+  async createPay(payData: IPay): Promise<IPayModel | null> {
     try {
       // const preparedData = this.preparePay(payData)
-      const createdPay: IPaySchema | null = await Pay.create(payData);
+      const createdPay: IPayModel | null = await Pay.create(payData);
 
-      House.findOne({ name: createdPay.addressName }, (err, TargetHouse) => {
+      House.findOne({ _id: createdPay.addressId }, (err, TargetHouse) => {
         if (TargetHouse) {
           TargetHouse.pays.push(createdPay._id);
           TargetHouse.save();

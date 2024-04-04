@@ -1,5 +1,5 @@
 import service from './service';
-import { IPaySchema } from './types';
+import { IPayModel } from './types';
 import { Request, Response } from 'express';
 
 export type PayControllerType = typeof PayController;
@@ -8,7 +8,7 @@ const PayController = {
     try {
       const data = req?.body;
 
-      const pay: IPaySchema | null = await service.createPay(data);
+      const pay: IPayModel | null = await service.createPay(data);
       res.status(200).json(pay);
     } catch (e) {
       console.log(e);

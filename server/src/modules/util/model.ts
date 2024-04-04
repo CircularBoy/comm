@@ -32,4 +32,4 @@ export const UtilSchema = new Schema<IUtilType>({
 
 */
 
-export default model<IUtilModel>('UtilModel', UtilSchema);
+export default model<IUtilModel>('util', UtilSchema);

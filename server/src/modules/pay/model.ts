@@ -1,14 +1,15 @@
 import { model, Schema } from 'mongoose';
-import { IPaySchema } from './types';
+import { IPayModel } from './types';
 
 const Pay = new Schema({
-  serviceId: { type: Schema.Types.ObjectId, ref: 'Service', required: true },
+  utilId: { type: Schema.Types.ObjectId, ref: 'util', required: true },
+  addressId: { type: Schema.Types.ObjectId, ref: 'house', required: true },
   month: { type: String, required: true },
-  addressName: { type: String, required: true },
+  // addressName: { type: String, required: true },
   // createdData: {type: Date, required: true},
   lastStat: { type: Number },
   newStat: { type: Number },
-  diffStat: { type: Number },
+  // diffStat: { type: Number },
   // planValue: [{
   // 	value: {type: Number, required: true},
   // 	fromStat: {type: Number, required: true}
@@ -21,4 +22,4 @@ const Pay = new Schema({
   // paidSum: {type: Number, required: true}
 });
 
-export default model<IPaySchema>('Pay', Pay);
+export default model<IPayModel>('pay', Pay);
