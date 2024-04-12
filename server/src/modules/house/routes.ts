@@ -10,8 +10,8 @@ const routes = [
   {
     method: 'get',
     path: '/houses',
-    func: controller.getHouses,
-    role: 'user' as const
+    func: controller.getHouses
+    // role: 'guest' as const
   }
 ];
 
