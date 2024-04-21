@@ -11,6 +11,6 @@ Object.values(modules).forEach((module: IModule) => {
   }
 });
 
-console.log({ api });
+// console.log({ api });
 
 export default api;

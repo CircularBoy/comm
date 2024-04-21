@@ -17,10 +17,10 @@ function* startAppWatcher() {
 //
 // Workers
 //
-function* blankWorker(api: ApiType) {
+function* blankWorker( api: ApiType) {
   const houses: ApiType = yield api.getHouses();
   yield console.log('blank worker', api);
-  yield console.log('blank worker', houses);
+  yield console.log('blank houses', houses);
 }
 
 function* startAppWorker() {

@@ -4,6 +4,7 @@ import houses from './houses';
 
 export type Test = typeof _blank;
 
+
 export default {
   _blank,
   houses,

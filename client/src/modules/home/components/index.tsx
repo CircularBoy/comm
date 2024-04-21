@@ -2,14 +2,14 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import {blank, startApp} from '../store/actions';
+// import {blank, startApp} from '../store/actions';
 
 const RootModule = (): JSX.Element => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(startApp());
-    dispatch(blank());
+    // dispatch(startApp());
+    // dispatch(blank());
   }, [dispatch]);
 
   return (
