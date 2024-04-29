@@ -27,6 +27,7 @@ const HouseController = {
   ): Promise<void> => {
     try {
       const houses: IHouseModel[] = await service.getHouses();
+      console.log('controller houses', houses, typeof houses);
       res.status(200).json(houses);
     } catch (e) {
       next(e);

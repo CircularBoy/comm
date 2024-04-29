@@ -14,8 +14,8 @@
 //
 //   return <div>Houses</div>;
 // };
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 
 import { getHouses } from '../store/actions';
 
@@ -23,15 +23,15 @@ import { getHouses } from '../store/actions';
 
 const HousesPage = (): JSX.Element => {
   const dispatch = useDispatch();
-  // const state = useSelector((state: any) => state);
-  // console.log({ state });
-  // const dispatch = useDispatch();
+  const state = useSelector((state: any) => state.houses);
+  console.log({ state });
 
   useEffect(() => {
-    dispatch({ type: 'STARTAPP' });
+    dispatch(getHouses());
   }, [dispatch]);
 
   const handleClick = () => {
+    console.log(123);
     dispatch(getHouses());
   };
 

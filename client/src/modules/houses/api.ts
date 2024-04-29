@@ -1,6 +1,9 @@
 // import { ApiType } from '../../api';
 import axios from '../../config/api';
-import { IHouse } from './type';
+import { IHouse } from "../../../../shared/types/house-types.ts";
+// import { IHouse } from './type';
+
+
 
 const api = {
   getHouses: async () => {

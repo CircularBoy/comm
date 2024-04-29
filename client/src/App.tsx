@@ -4,13 +4,14 @@ import { RouterProvider } from 'react-router-dom';
 
 import router from './config/router';
 import store from './config/store';
+import Layout from "./components/Layout.tsx";
 
 function App() {
   return (
     <ReduxProvider store={store}>
-      {/*<ChakraProvider>*/}
+      <Layout>
         <RouterProvider router={router} />
-      {/*</ChakraProvider>*/}
+      </Layout>
     </ReduxProvider>
   );
 }

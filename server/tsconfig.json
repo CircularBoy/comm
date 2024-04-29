@@ -58,10 +58,10 @@
     "module": "nodenext",
     "esModuleInterop": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "../",
     "resolveJsonModule": true,
     "sourceMap": true
   },
-  "include": ["src//*.ts", "src//*.d.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src//*.ts", "src//*.d.ts", "../shared-types"],
+  "exclude": ["server/node_modules", "client", "client-old(with cra)"]
 }

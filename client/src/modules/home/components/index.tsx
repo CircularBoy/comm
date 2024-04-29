@@ -8,7 +8,6 @@ const RootModule = (): JSX.Element => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(startApp());
     // dispatch(blank());
   }, [dispatch]);
 

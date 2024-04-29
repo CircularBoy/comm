@@ -1,4 +1,4 @@
-import { take, takeLatest, all } from 'redux-saga/effects';
+import { put, takeLatest, all } from 'redux-saga/effects';
 
 import modules from '../modules';
 import { ApiType } from '../modules/index.d';
@@ -13,5 +13,6 @@ export default function* rootSaga(api: ApiType) {
   yield all([...moduleSagaList]);
   console.log({ moduleSagaList });
 
-  yield take('STARTAPP');
+  yield put({type: 'STARTAPP'});
+  // yield take('STARTAPP');
 }

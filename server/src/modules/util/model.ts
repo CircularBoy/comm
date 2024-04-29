@@ -3,6 +3,8 @@ import { IUtilType, IUtilModel } from './types';
 
 export const UtilSchema = new Schema<IUtilType>({
   name: { type: String, required: true },
+  tag: {type: String, required: true},
+  default: {type: Boolean, required: true},
   plans: [
     {
       dateStart: { type: String, required: true },
