@@ -1,6 +1,7 @@
 import House from './model';
-import { IHouse, IHouseModel } from './types';
+import {  IHouseModel } from './types';
 import { utilsList } from '../../helpers/constantsData/utils';
+import { IHouse } from "../../../../shared/types/house-types";
 
 export type HouseServiceType = typeof HouseService;
 const HouseService = {
