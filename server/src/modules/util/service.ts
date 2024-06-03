@@ -15,7 +15,6 @@ const UtilService = {
       } else {
         createdData = await Util.insertMany(data);
       }
-      console.log(createdData);
       return createdData;
     } catch (e) {
       console.log(e);
@@ -25,7 +24,6 @@ const UtilService = {
   async getUtils(): Promise<IUtilModel[] | null> {
     try {
       const utils = await Util.find();
-      console.log(utils instanceof Util);
       utils.map((item) => {
         console.log(item._id);
       });
