@@ -4,7 +4,8 @@ const api: ApiType = {} as ApiType;
 
 Object.values(modules).forEach((module: IModule) => {
   for (const item in module.api) {
-    if (module.api.hasOwnProperty(item)) {
+    if (Object.prototype.hasOwnProperty.call(module.api, item)) {
+      console.log(module.api.hasOwnProperty);
       const method = item as keyof ApiType;
       api[method] = module.api[method] as ApiType[keyof ApiType];
     }

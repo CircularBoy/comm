@@ -13,7 +13,7 @@ const RootModule = (): JSX.Element => {
 
   return (
     <>
-        <div>Hey hey home</div>
+      <div>Hey hey home</div>
     </>
   );
 };
