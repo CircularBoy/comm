@@ -1,9 +1,9 @@
 // import { ChakraProvider } from '@chakra-ui/react';
-import { Provider as ReduxProvider } from 'react-redux';
-import { RouterProvider } from 'react-router-dom';
+import { Provider as ReduxProvider } from "react-redux";
+import { RouterProvider } from "react-router-dom";
 
-import router from './config/router';
-import store from './config/store';
+import router from "./config/router";
+import store from "./config/store";
 import Layout from "./components/Layout.tsx";
 
 function App() {
