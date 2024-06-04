@@ -35,7 +35,8 @@
 //
 // export default query;
 
-import axios, { AxiosRequestConfig, AxiosInstance } from 'axios';
+import axios from 'axios';
+import type { AxiosRequestConfig, AxiosInstance } from 'axios';
 
 const config: AxiosRequestConfig = {
   baseURL: 'http://localhost:3001/api',
