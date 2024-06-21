@@ -1,12 +1,11 @@
-import _blank from './_blank';
-import home from './home';
+// import _blank from './_blank';
+// import home from './home';
 import houses from './houses';
-
-export type Test = typeof _blank;
-
+import auth from './auth';
 
 export default {
-  _blank,
+  // _blank,
   houses,
-  home,
+  // home,
+  auth,
 };

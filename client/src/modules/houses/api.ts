@@ -1,18 +1,17 @@
 // import { ApiType } from '../../api';
 import axios from '../../config/api';
-import { IHouse } from "../../../../shared/types/house-types.ts";
-// import { IHouse } from './type';
+import { GetHouseResponse, IHouseWithId } from '../../../../shared/types/house-types.ts';
+import type { AxiosResponse } from 'axios';
 
-
-
-const api = {
-  getHouses: async () => {
-    return axios.get<IHouse[]>('houses');
+const housesApi = {
+  getHouses: async (): Promise<AxiosResponse<GetHouseResponse>> => {
+    return axios.get<IHouseWithId[]>('houses');
   },
 
-  createHouse: (data: any) => {
-    return axios.post<IHouse>('houses/create', data);
-  },
+  // createHouse: (data: any) => {
+  //   return axios.post<IHouse>('houses/create', data);
+  // },
 };
 
-export default api;
+export type HousesApiType = typeof housesApi;
+export default housesApi;

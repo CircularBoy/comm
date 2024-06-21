@@ -6,18 +6,21 @@ import { uuid } from 'uuidv4';
 import UserDto from '../dtos/safe-user';
 import tokenService from './token-service';
 import MailService from '../../../services/mail-service';
+import { RegistrationPayload } from '../../../../../shared/types/user-types';
 
 export type UserServiceType = typeof userService;
 
 type RegistrationUserType = IToken & UserDto;
 
 const userService = {
-  async registration(userData: IUser): Promise<RegistrationUserType | null> {
+  async registration(
+    userData: RegistrationPayload
+  ): Promise<RegistrationUserType | null> {
     const { email, password } = userData;
     const candidate: IUser = await UserModel.findOne({ email });
 
     if (candidate) {
-      throw ApiError.BadRequest('Email already exists');
+      throw ApiError.BadRequest('Email already exists', [], 409);
     }
     const hashPassword = await bcrypt.hash(password, 2);
     const activationLink = uuid();

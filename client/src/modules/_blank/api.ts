@@ -1,10 +1,12 @@
-import api from '../../config/api';
+// import api from '../../config/api';
 
-export default {
-  blank: () => {
-    return api.get('houses');
-  },
-  test: () => {
-    return api.get('houses');
-  },
+const blankApi = {
+  // blank: () => {
+  //   return api.get('houses');
+  // },
+  // test: () => {
+  //   return api.get('houses');
+  // },
 };
+
+export default blankApi;

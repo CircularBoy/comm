@@ -1,5 +1,7 @@
-import authService from './services/auth';
+import authService from './services/auth-service';
 import { NextFunction, Request, Response } from 'express';
+import { RegistrationResponse } from '../../../../shared/types/user-types';
+// import Registration from './validators/registration';
 
 export type UserControllerType = typeof userController;
 
@@ -23,8 +25,14 @@ const userController = {
         maxAge: 1000 * 60 * 30,
         httpOnly: true
       });
-      res.status(200).json('email ' + userData.email + ' registered');
+      const responseData: RegistrationResponse = {
+        email: userData.email,
+        id: userData.id,
+        accessToken: userData.accessToken
+      };
+      res.status(200).json(responseData);
     } catch (e) {
+      // res.status(409).json('email  already registered');
       next(e);
     }
   },

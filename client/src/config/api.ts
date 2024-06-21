@@ -48,4 +48,17 @@ const config: AxiosRequestConfig = {
 
 const axiosInstance: AxiosInstance = axios.create(config);
 
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const accessToken = localStorage.getItem('accessToken'); // get stored access token
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`; // set in header
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
+
 export default axiosInstance;

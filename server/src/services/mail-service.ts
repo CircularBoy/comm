@@ -18,20 +18,24 @@ class MailService {
   }
 
   async sendMail(to: string, link: string) {
-    const url: string =
-      process.env.SITE_URL_API + '/activation-account/' + link;
+    try {
+      const url: string =
+        process.env.SITE_URL_API + '/activation-account/' + link;
 
-    await this.transporter.sendMail({
-      from: process.env.SMTP_USER,
-      to,
-      subject: 'Activation link for site ' + process.env.SITE_URL,
-      text: '',
-      html: `
+      await this.transporter.sendMail({
+        from: process.env.SMTP_USER,
+        to,
+        subject: 'Activation link for site ' + process.env.SITE_URL,
+        text: '',
+        html: `
         <div>
             <h1>To activate your accaunt click on link</h1> 
             <a href="${url}">Activation link</a>
         </div>`
-    });
+      });
+    } catch (e) {
+      console.log(e, 'email send error');
+    }
   }
 }
 export default new MailService();

@@ -1,6 +1,6 @@
 import controller from './controller';
 import routes from './routes';
-import service from './services/auth';
+import service from './services/auth-service';
 import model from './models/user';
 import { IUserModule } from './types';
 
