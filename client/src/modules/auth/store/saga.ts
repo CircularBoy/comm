@@ -23,7 +23,6 @@ function* registrationWorker(
   api: ApiType,
   action: { type: string; payload: RegistrationPayload },
 ): Generator<unknown, void, AxiosResponse<RegistrationResponse>> {
-  console.log('blank worker', { api }, { action });
   try {
     const response = yield call(api.registration, action.payload);
     if (response.status === 200) {
